@@ -1,0 +1,41 @@
+Answer:
+
+c(i) 
+
+Before clustering, I discover that the data in the event and venue columns are inconsistent and messy.
+When I use "Text Facet" operation, it groups indentical cells across rows and shows me the number of rows in each group.
+After I use "Clustering" operation, it merges the selected cells and changes several hundreds of cells.
+By grouping the cells and grouping the group, I fix the inconsistences.
+
+c(iii) 
+
+Column in the dataset that contains only ordinal data is the id column;       
+Column in the dataset that contains only norminal data is the status column.
+
+c(v) 
+
+By using the split feature, we can split the "place" column by separator "," to several subsets
+which contains the basic elements of the address, like "street", "city", "state", "country" etc. This
+feature can greatly help us to refine the "place" column and dig out much more specific values from it
+instead of a long string of location. So the split feature can help us disjunct valuable data from other.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+toString(toDate(value),"MM/dd/yyyy")
+"http://api.menus.nypl.org/dishes/" + value

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+.link {
+  fill: none;
+  stroke: #666;
+  stroke-width: 1.5px;
+}
+
+circle {
+  fill: #ccc;
+  stroke: #333;
+  stroke-width: 1.5px;
+}
+
+text {
+  font: 10px sans-serif;
+  pointer-events: none;
+  text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, 0 -1px 0 #fff, -1px 0 0 #fff;
+}
+
+.d3-tip {
+  line-height: 1;
+  font-weight: bold;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 2px;
+}
+
+body {
+  width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+</style>
+<body>
+<script src="../lib/d3/d3.v3.min.js"></script>
+<script src="../lib/d3/d3.tip.v0.6.3.js"></script>
+<script>
+
+// http://blog.thomsonreuters.com/index.php/mobile-patent-suits-graphic-of-the-day/
+var links = [
+  {source: "Microsoft", target: "Amazon", type: "licensing"},
+  {source: "Microsoft", target: "HTC", type: "licensing"},
+  {source: "Samsung", target: "Apple", type: "suit"},
+  {source: "Motorola", target: "Apple", type: "suit"},
+  {source: "Nokia", target: "Apple", type: "resolved"},
+  {source: "HTC", target: "Apple", type: "suit"},
+  {source: "Kodak", target: "Apple", type: "suit"},
+  {source: "Microsoft", target: "Barnes & Noble", type: "suit"},
+  {source: "Microsoft", target: "Foxconn", type: "suit"},
+  {source: "Oracle", target: "Google", type: "suit"},
+  {source: "Apple", target: "HTC", type: "suit"},
+  {source: "Microsoft", target: "Inventec", type: "suit"},
+  {source: "Samsung", target: "Kodak", type: "resolved"},
+  {source: "LG", target: "Kodak", type: "resolved"},
+  {source: "RIM", target: "Kodak", type: "suit"},
+  {source: "Sony", target: "LG", type: "suit"},
+  {source: "Kodak", target: "LG", type: "resolved"},
+  {source: "Apple", target: "Nokia", type: "resolved"},
+  {source: "Qualcomm", target: "Nokia", type: "resolved"},
+  {source: "Apple", target: "Motorola", type: "suit"},
+  {source: "Microsoft", target: "Motorola", type: "suit"},
+  {source: "Motorola", target: "Microsoft", type: "suit"},
+  {source: "Huawei", target: "ZTE", type: "suit"},
+  {source: "Ericsson", target: "ZTE", type: "suit"},
+  {source: "Kodak", target: "Samsung", type: "resolved"},
+  {source: "Apple", target: "Samsung", type: "suit"},
+  {source: "Kodak", target: "RIM", type: "suit"},
+  {source: "Nokia", target: "Qualcomm", type: "suit"}
+];
+
+var target_nodes = [
+
+];
+
+var nodes = {};
+
+// Compute the distinct nodes from the links.
+links.forEach(function(link) {
+  link.source = nodes[link.source] || (nodes[link.source] = {name: link.source});
+  link.target = nodes[link.target] || (nodes[link.target] = {name: link.target});
+});
+
+
+var width = 960,
+    height = 500;
+
+var force = d3.layout.force()
+    .nodes(d3.values(nodes))
+    .links(links)
+    .size([width, height])
+    .linkDistance(60)
+    .charge(-300)
+    .on("tick", tick)
+    .start();
+
+var tip = d3.tip()
+  .attr('class', 'd3-tip')
+  .offset([-10, 0])
+  .html(function(d) { 
+    if (d.name == "Microsoft")
+      { return "Amazon" + "<br />" + "HTC" + "<br />" + "Barnes & Noble" + "<br />" + "Foxconn" + "<br />" + "Inventec" + "<br />" + "Motorola";}
+    if (d.name == "Amazon")
+      { return "Microsoft";}
+    if (d.name == "Google")
+      { return "Oracle";}
+    if (d.name == "Oracle")
+      { return "Google";}
+    if (d.name == "ZTE")
+      { return "Huawei" + "<br />" + "Ericsson";}
+    if (d.name == "Qualcomm")
+      { return "Nokia";}
+    if (d.name == "Sony")
+      { return "LG";}
+    if (d.name == "RIM")
+      { return "Kodak";}
+    if (d.name == "Kodak")
+      { return "Apple" + "<br />" + "LG" + "<br />" + "Samsung" + "<br />" + "RIM";}
+    if (d.name == "Barnes & Noble")
+      { return "Microsoft";}
+    if (d.name == "Foxconn")
+      { return "Microsoft";}
+    if (d.name == "HTC")
+      { return "Microsoft" + "<br />" + "Apple";}
+    if (d.name == "Inventec")
+      { return "Microsoft";}
+    if (d.name == "Motorola")
+      { return "Microsoft" + "<br />" + "Apple";}
+    if (d.name == "Apple")
+      { return "HTC" + "<br />" + "Kodak" + "<br />" + "Motorola" + "<br />" + "Nokia" + "<br />" + "Samsung";}
+    if (d.name == "Samsung")
+      { return "Apple Kodak";}
+    if (d.name == "Nokia")
+      { return "Apple" + "<br />" + "Qualcomm";}
+    if (d.name == "Huawei")
+      { return "ZTE";}
+    if (d.name == "Ericsson")
+      { return "ZTE";}
+    if (d.name == "LG")
+      { return "Sony" + "<br />" + "Kodak";}
+    });
+
+var svg = d3.select("body").append("svg")
+    .attr("width", width)
+    .attr("height", height);
+
+svg.call(tip);
+
+// Per-type markers, as they don't inherit styles.
+svg.append("defs").selectAll("marker")
+    .data(["suit", "licensing", "resolved"])
+  .enter().append("marker")
+    .attr("id", function(d) { return d; })
+    .attr("viewBox", "0 -5 10 10")
+    .attr("refX", 15)
+    .attr("refY", -1.5)
+    .attr("markerWidth", 6)
+    .attr("markerHeight", 6)
+    .attr("orient", "auto")
+  .append("path")
+    .attr("d", "M0,-5L10,0L0,5");
+
+var path = svg.append("g").selectAll("path")
+    .data(force.links())
+  .enter().append("path")
+    .attr("class", function(d) { /*console.log(d);*/ return "link " + d.type; })
+    .attr("marker-end", function(d) { return "url(#" + d.type + ")"; })
+    .style("stroke", function(d) { 
+      if (d.type == "suit")
+        { return "red"; }
+      if (d.type == "licensing")
+        { return "blue"; }
+      if (d.type == "resolved")
+        { return "green"; }
+    });
+
+
+// add tooltip
+var tooltip = d3.select("body")
+                .append("div")
+                .attr("class", "tooltip")
+                .attr("opacity", 0.0)
+
+var circle = svg.append("g").selectAll("circle")
+    .data(force.nodes())
+  .enter().append("circle")
+    .attr("r", 8)
+    .style("fill", function(d) { return "yellow";}) 
+    .on("dblclick", dblclick)
+    .on('mouseover', tip.show)
+    .on('mouseout', tip.hide)
+    .call(force.drag);
+
+
+// fix and release nodes
+var drag = force.drag()
+    .on("dragstart", dragstart);
+
+function dblclick(d) {
+  d3.select(this).classed( "fixed", d.fixed = false)
+                 .style("fill", "yellow");
+}
+
+function dragstart(d) {
+  d3.select(this).classed( "fixed", d.fixed = true)
+                 .style("fill", "red");               
+}
+
+
+// add the text 
+var labels = svg.selectAll("text")
+                .data(force.nodes())
+                .enter()
+                .append("text")
+                .style("fill", "black")
+                .attr("dx", 20)
+                .attr("dy", 8)
+                .text(function(d) { return d.name; });
+
+
+
+// Use elliptical arc path segments to doubly-encode directionality.
+function tick() {
+  path.attr("d", linkArc);
+  labels.attr("transform", transform);
+  circle.attr("transform", transform);
+}
+
+function linkArc(d) {
+  var dx = d.target.x - d.source.x,
+      dy = d.target.y - d.source.y,
+      dr = Math.sqrt(dx * dx + dy * dy);
+  return "M" + d.source.x + "," + d.source.y + "A" + dr + "," + dr + " 0 0,1 " + d.target.x + "," + d.target.y;
+}
+
+function transform(d) {
+  return "translate(" + d.x + "," + d.y + ")";
+}
+
+</script>

@@ -1,0 +1,51 @@
+-- Query for question a
+CREATE TABLE movies(id integer,name text,score integer);
+.separator ','
+.import movie-name-score.txt movies
+CREATE TABLE moviecast(movie_id integer,cast_id integer,cast_name text);
+.separator ','
+.import movie-cast.txt moviecast
+SELECT null;
+
+-- Query for question b
+CREATE INDEX movies_primary_index ON movies(id);
+CREATE INDEX movies_secondary_index ON moviecast(movie_id);
+SELECT null;
+
+-- Query for question c
+SELECT AVG(score) AS avg_score FROM movies WHERE score > 80;
+SELECT null;
+
+-- Query for question d
+SELECT * FROM movies WHERE score > 50 ORDER BY score, name LIMIT 8;
+SELECT null;
+
+-- Query for question e
+SELECT cast_id, cast_name, COUNT(cast_id) AS movie_count FROM moviecast GROUP BY cast_id HAVING COUNT(cast_id) = 3 ORDER BY cast_name LIMIT 10;
+SELECT null;
+
+-- Query for question f
+SELECT moviecast.cast_id AS cast_id, moviecast.cast_name AS cast_name, AVG(movies.score) AS avg_score FROM moviecast INNER JOIN movies ON moviecast.movie_id = movies.id GROUP BY moviecast.cast_id HAVING (AVG(movies.score) >= 50 AND COUNT(moviecast.cast_id) >= 3) ORDER BY score DESC, cast_name LIMIT 10;
+SELECT null;
+
+-- Query for question g
+CREATE VIEW good_collaboration AS SELECT a.cast_id AS cast_member_id1, b.cast_id AS cast_member_id2, AVG(score) AS avg_movie_score, COUNT(movie_id) AS movie_count FROM moviecast AS a JOIN moviecast as b USING (movie_id) JOIN movies on movies.id = a.movie_id WHERE cast_member_id1 != cast_member_id2 GROUP BY cast_member_id1, cast_member_id2 HAVING movie_count >= 3 and avg_movie_score >= 75 ORDER BY avg_movie_score DESC;
+SELECT null;
+--SELECT * FROM [good_collaboration];
+
+-- Query for question h
+SELECT DISTINCT cast_id, cast_name, avg_movie_score AS avg_good_collab_score FROM moviecast, [good_collaboration] WHERE cast_id = cast_member_id1 LIMIT 5;
+SELECT null;
+
+-- Query for question i (1)
+CREATE VIRTUAL TABLE movie_overview USING fts3(id integer, name text, year integer, overview text, popularity decimal);
+.separator ','
+.import movie-overview.txt movie_overview
+SELECT COUNT(*) FROM movie_overview WHERE overview MATCH 'good OR bad';
+SELECT null;
+
+-- Query for question i (2)
+SELECT id FROM movie_overview WHERE overview MATCH 'life NEAR/5 about';
+SELECT null;
+
+

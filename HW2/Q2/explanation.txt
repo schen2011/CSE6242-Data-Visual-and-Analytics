@@ -1,0 +1,16 @@
+Q2.e
+description.txt: Explain all the methods used to create the graph in not more
+than 50 words. The description must explicitly mention the methods.
+
+Answer:
+d3.scale.ordinal().rangeRoundBands([0,w],.1);
+Maps a discrete input domain to an output range avoiding antialiasing artifacts.
+
+d3.scale.category10();
+Constructs an ordinal scale with a range of ten categorical colors.
+
+d.slice(0,9);
+Extract a section of the array.
+
+d3.layout.stack()
+Constructs a stack layout and computes the baseline of y-axis for the next stacked layer in the array.

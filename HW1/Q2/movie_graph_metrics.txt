@@ -1,0 +1,27 @@
+2.c
+¦ Average node degree: 2.105
+
+¦ Diameter of the graph: 6
+
+¦ Average path length: 1.6816846229187072
+
+
+Briefly explain the intuitive meaning:
+
+¦ Average node degree: The degree of a node is the number of relation (edge) it has.
+Thus this metric refers to the average degree that each node has.
+
+¦ Diameter of the graph: This metric refers to the maximum connection between two 
+most distant nodes in the network.
+
+¦ Average path length: This metric refers to the average connected path length between
+arbitrary two nodes by measuring the shortest path.
+
+2.d
+¦ Top five movies with the highest PageRank score
+(1)197950	The Connection
+(2)9502		Kung Fu Panda
+(3)205596	The Imitation Game
+(4)109091	The Counselor		
+(5)335186	The Dossier		
+

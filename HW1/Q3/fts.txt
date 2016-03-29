@@ -1,0 +1,5 @@
+Explain your understanding of FTS performance in comparison with a SQL ‘like’ query and why one may perform better than the other.
+
+Answer:
+I think FTS performs better that the "LIKE" in SQL. Because the FTS can search only rows containing the keyword as a discrete token.
+while what "LIKE" query will search is those terms containing the key word. Thus the FTS can be a more convenient way to search.

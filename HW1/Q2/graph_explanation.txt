@@ -1,0 +1,6 @@
+b.Describing your choice of visualization, using fewer than 50 words.
+
+Answer: In this graph, I choose the Fruchterman Reingold model. In this model,
+the movie data can be displayed properly by following the requirements like minimum
+edge crossing, roughly same edge length, straight line edges, compactness and symmetry.
+Besides by adjusting the elements's color and size, I make the graph easy to visualize. 

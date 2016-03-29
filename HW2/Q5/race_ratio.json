@@ -1,0 +1,122 @@
+[
+  {
+    "School": "Uni. of Georgia",
+    "White": 19060,
+    "Black": 1933,
+    "Hispanic": 1358,
+    "Asian": 2338,
+    "American Indian/Alaska Native": 24,
+    "Native Hawaiian/Pacific Islander": 29,
+    "Two or more races": 781,
+    "Non-resident aliens": 319,
+    "Race unknown": 279
+  },
+  {
+    "School": "Georgia State Univ.",
+    "White": 7571,
+    "Black": 9579,
+    "Hispanic": 2159,
+    "Asian": 2739,
+    "American Indian/Alaska Native": 41,
+    "Native Hawaiian/Pacific Islander": 27,
+    "Two or more races": 1047,
+    "Non-resident aliens": 393,
+    "Race unknown": 572
+  },
+  {
+    "School": "Kennesaw State Univ.",
+    "White": 13971,
+    "Black": 3929,
+    "Hispanic": 1604,
+    "Asian": 733,
+    "American Indian/Alaska Native": 49,
+    "Native Hawaiian/Pacific Islander": 33,
+    "Two or more races": 842,
+    "Non-resident aliens": 420,
+    "Race unknown": 631
+  },
+  {
+    "School": "Georgia Perimeter College",
+    "White": 5541,
+    "Black": 8079,
+    "Hispanic": 1602,
+    "Asian": 1758,
+    "American Indian/Alaska Native": 65,
+    "Native Hawaiian/Pacific Islander": 23,
+    "Two or more races": 619,
+    "Non-resident aliens": 942,
+    "Race unknown": 357
+  },
+  {
+    "School": "Georgia Southern Univ.",
+    "White": 10823,
+    "Black": 4445,
+    "Hispanic": 684,
+    "Asian": 233,
+    "American Indian/Alaska Native": 80,
+    "Native Hawaiian/Pacific Islander": 26,
+    "Two or more races": 332,
+    "Non-resident aliens": 214,
+    "Race unknown": 269
+  },
+  {
+    "School": "Univ. of North Georgia",
+    "White": 11458,
+    "Black": 651,
+    "Hispanic": 1246,
+    "Asian": 410,
+    "American Indian/Alaska Native": 33,
+    "Native Hawaiian/Pacific Islander": 17,
+    "Two or more races": 347,
+    "Non-resident aliens": 173,
+    "Race unknown": 165
+  },
+  {
+    "School": "Georgia Tech.",
+    "White": 7728,
+    "Black": 878,
+    "Hispanic": 908,
+    "Asian": 2446,
+    "American Indian/Alaska Native": 18,
+    "Native Hawaiian/Pacific Islander": 13,
+    "Two or more races": 451,
+    "Non-resident aliens": 1465,
+    "Race unknown": 68
+  },
+  {
+    "School": "Chattahoochee Technical College",
+    "White": 5640,
+    "Black": 2910,
+    "Hispanic": 808,
+    "Asian": 200,
+    "American Indian/Alaska Native": 54,
+    "Native Hawaiian/Pacific Islander": 22,
+    "Two or more races": 149,
+    "Non-resident aliens": 62,
+    "Race unknown": 90
+  },
+  {
+    "School": "Univ. of West Georgia",
+    "White": 5315,
+    "Black": 3409,
+    "Hispanic": 418,
+    "Asian": 93,
+    "American Indian/Alaska Native": 19,
+    "Native Hawaiian/Pacific Islander": 10,
+    "Two or more races": 317,
+    "Non-resident aliens": 100,
+    "Race unknown": 96
+  },
+  {
+    "School": "Valdosta State Univ.",
+    "White": 5107,
+    "Black": 3436,
+    "Hispanic": 405,
+    "Asian": 95,
+    "American Indian/Alaska Native": 22,
+    "Native Hawaiian/Pacific Islander": 16,
+    "Two or more races": 295,
+    "Non-resident aliens": 217,
+    "Race unknown": 41
+  }
+]
