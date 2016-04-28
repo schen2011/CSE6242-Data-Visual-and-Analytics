@@ -1,0 +1,18 @@
+Description:
+
+In [11]: Load the file text to file.
+
+In [13]: Splits the content separated by a tab, and then maps a key pair 
+	 of node and weight. Then filters the original weight which is 1. 
+	 After that multiplies weight with corresponding factor (80%) and 
+	 reduces pairs by sum up the value of each key to get source output.
+
+In [15]: Splits the content separated by a tab, and then maps a key pair 
+	 of node and weight. Then filters the original weight which is 1. 
+	 After that multiplies weight with corresponding factor (20%) and 
+	 reduces pairs by sum up the value of each key to get target output.
+
+In [17]: Unions two output from above and reduces them by key, at last formats
+	 the result.
+
+In [18]: Save file to HDFS.
