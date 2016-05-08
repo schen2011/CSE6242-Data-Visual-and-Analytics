@@ -1,0 +1,11 @@
+a.
+Randomly pick attributes. Calculate the entropy and choosing the best attribute and best value based 
+on the information gain. Split the data using the best attribute and best value. Stop the splitting 
+after the minimum node size is reached. Create multiple trees and output the ensemble of trees. 
+I choose information gain as splitting criterion, because information gain is easy to implement.
+
+b. 0.8010
+
+c. 1: Stop when fewer than 5 records remain in a node. It may reduce the variance of the model, thus may perform better if the former model overfits. 
+   2: The criterion for choosing best attribute and best value can be the information gain ratio instead of information gain. Because information gain
+      wil choose the best attribute when it's number is pretty large. However, information gain ratio can overcome this drawback. 
